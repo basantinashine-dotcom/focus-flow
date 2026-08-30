@@ -254,6 +254,7 @@
     if (!container) return;
     container.classList.toggle("waterfall-active", state.running && state.mode === "work");
     container.classList.toggle("waterfall-calm", state.running && state.mode !== "work");
+    container.dataset.mode = state.mode;
   }
 
   initWaterfall();

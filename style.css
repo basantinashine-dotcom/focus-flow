@@ -9,6 +9,9 @@
   --accent-long: #7c6bff;
   --track: #262b3a;
   --radius: 16px;
+  --accent-rgb: 255, 107, 94;
+  --accent-short-rgb: 94, 201, 255;
+  --accent-long-rgb: 124, 107, 255;
 }
 
 * { box-sizing: border-box; }
@@ -44,8 +47,8 @@ body {
   background: linear-gradient(
     to bottom,
     transparent 0%,
-    rgba(148, 205, 255, 0.55) 15%,
-    rgba(148, 205, 255, 0.15) 85%,
+    rgba(var(--streak-rgb, 148, 205, 255), 0.55) 15%,
+    rgba(var(--streak-rgb, 148, 205, 255), 0.15) 85%,
     transparent 100%
   );
   filter: blur(0.4px);
@@ -55,11 +58,21 @@ body {
   animation-timing-function: linear;
   animation-iteration-count: infinite;
   animation-delay: var(--delay, 0s);
-  transition: filter 0.6s ease;
+  transition: filter 0.6s ease, background 0.8s ease;
 }
 
 .waterfall {
   --speed-mult: 1;
+  --streak-rgb: var(--accent-short-rgb);
+  transition: background 0.8s ease;
+}
+
+.waterfall[data-mode="work"] {
+  --streak-rgb: var(--accent-rgb);
+}
+
+.waterfall[data-mode="long"] {
+  --streak-rgb: var(--accent-long-rgb);
 }
 
 .waterfall.waterfall-active {
@@ -90,9 +103,10 @@ body {
   width: 130%;
   height: 220px;
   transform: translateX(-50%);
-  background: radial-gradient(ellipse at center, rgba(148, 205, 255, 0.18) 0%, transparent 70%);
+  background: radial-gradient(ellipse at center, rgba(var(--streak-rgb, 148, 205, 255), 0.18) 0%, transparent 70%);
   filter: blur(10px);
   animation: mist-pulse 4s ease-in-out infinite;
+  transition: background 0.8s ease;
 }
 
 @keyframes mist-pulse {
