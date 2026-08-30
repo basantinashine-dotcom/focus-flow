@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Focus Flow</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="waterfall" id="waterfall" aria-hidden="true">
+    <div class="waterfall-mist"></div>
+  </div>
+
+  <div class="app">
+    <header class="app-header">
+      <h1>Focus Flow</h1>
+      <div class="mode-tabs">
+        <button class="mode-tab active" data-mode="work">Focus</button>
+        <button class="mode-tab" data-mode="short">Short Break</button>
+        <button class="mode-tab" data-mode="long">Long Break</button>
+      </div>
+    </header>
+
+    <main class="timer-section">
+      <div class="ring-wrap">
+        <svg class="ring" viewBox="0 0 240 240">
+          <circle class="ring-track" cx="120" cy="120" r="108"></circle>
+          <circle class="ring-progress" cx="120" cy="120" r="108"></circle>
+        </svg>
+        <div class="ring-center">
+          <div class="time" id="timeDisplay">25:00</div>
+          <div class="session-label" id="sessionLabel">Session 1</div>
+        </div>
+      </div>
+
+      <div class="controls">
+        <button class="btn-secondary" id="resetBtn" title="Reset (R)">↺</button>
+        <button class="btn-primary" id="startBtn" title="Start/Pause (Space)">Start</button>
+        <button class="btn-secondary" id="skipBtn" title="Skip (S)">⏭</button>
+      </div>
+
+      <p class="hint">Space = start/pause &nbsp;·&nbsp; R = reset &nbsp;·&nbsp; S = skip</p>
+    </main>
+
+    <section class="tasks-section">
+      <div class="tasks-header">
+        <h2>Tasks</h2>
+        <span class="tasks-count" id="tasksCount">0/0</span>
+      </div>
+      <form id="taskForm" class="task-form">
+        <input type="text" id="taskInput" placeholder="What are you working on?" autocomplete="off" maxlength="120">
+        <button type="submit">Add</button>
+      </form>
+      <ul id="taskList" class="task-list"></ul>
+    </section>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
